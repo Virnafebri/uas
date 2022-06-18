@@ -1,0 +1,90 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <center><h4>Form Peminjaman Non Mahasiswa</h4></center>
+      <hr />
+      <form class="row g-3" action="create" method="POST">
+        {% csrf_token %}
+        <div class="col-md-6">
+          <label for="nopinjamm" class="form-label">No Pinjam</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nopinjam"
+            placeholder="No Pinjam"
+          />
+        </div>
+     
+        <div class="col-md-6">
+          <label for="noanggota" class="form-label">No Anggota</label>
+          <input
+            type="text"
+            class="form-control"
+            name="noanggota"
+            placeholder="No Anggota"
+            value="{{ row.noanggotan }}"
+            
+          />
+        
+        </div>
+       
+        <div class="col-md-6">
+          <label for="nopinjamm" class="form-label">Tanggal Pinjam</label>
+          <input
+            type="date"
+            class="form-control"
+            name="tglpjm"
+            placeholder="Tanggal Pinjam"
+          />
+        </div>
+     
+        <div class="col-md-6">
+          <label for="nopinjamm" class="form-label">Tanggal Kembali</label>
+          <input
+            type="date"
+            class="form-control"
+            name="tglkmb"
+            placeholder="Tanggal Kembali"
+          />
+        </div>
+           <div class="col-md-6">
+          <label class="form-label" for="noanggota">Kode Petugas</label>
+          <select class="form-select" id="specificSizeSelect" name="kdpetugas">
+            <option selected>kode Petugas</option>
+            <option value="p-01">P-01</option>
+            <option value="p-02">P-02</option>
+            <option value="p-03">P-03</option>
+          </select>
+        </div>
+        <hr />
+        <table class="table table-bordered" width="500px">
+          <thead>
+            <tr>
+              <th scope="col">Kode Buku</th>
+              <th scope="col">Judul</th>
+              <th scope="col">Pengarang</th>
+              <th scope="col">Penerbit</th>
+              <th scope="col">Jumlah</th>
+          </thead>
+          <tbody>
+             <tr>
+              <td> <input type="text" class="form-control" name="kdbuku"></td>
+              <td><input type="text" class="form-control" name="judul" ></td>
+              <td><input type="text" class="form-control" name="pengarang" ></td>
+              <td><input type="text" class="form-control" name="penerbit"></td>
+              <td><input type="text" class="form-control" name="jumlah" ></td>
+            </tr>
+        </table>    
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

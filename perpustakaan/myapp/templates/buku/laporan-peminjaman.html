@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% block content %}
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <center><h2>Laporan Data Peminjaman</h2></center>
+        <hr />
+
+        <p>tanggal : 10/07/2022</p>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">No Pinjam</th>
+              <th scope="col">Kode Buku</th>
+              <th scope="col">Judul</th>
+              <th scope="col">Pengarang</th>
+              <th scope="col">Tanggal Kembali</th>
+              <th scope="col">Jumlah</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for pinjam in pinjamm %}
+            {% for list in detailm %}
+            {% for jml in detailm %}
+            <tr>
+              <td>1</td>
+              <td>{{ pinjam.nopinjamm }}</td> 
+              <td>{{ list.kodebuku }}</td>
+              <td>{{ list.judul }}</td>
+              <td>{{ list.pengarang }}</td> 
+              <td>{{ pinjam.tglkembali}}</td>
+              <td>{{ jml.jml }}</td>
+                
+            </tr>
+            {% endfor %}
+            {% endfor %}
+            {% endfor %}
+            {% for pinjam in pinjamn %}
+            <tr>
+              <td>1</td>
+              <td>{{ pinjam.nopinjamn }}</td> 
+               {% for list in buku %}
+              <td>{{ list.kodebuku }}</td>
+              <td>{{ list.judul }}</td>
+              <td>{{ list.pengarang }}</td>
+                {% endfor %}
+              <td>{{ pinjam.tglkembali}}</td>
+              <td>{{ list.jumekslempar }}</td>
+               
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <div style="text-align: right">
+          <p>Mengetahui &emsp; &emsp; &emsp;</p>
+          <p>Kepala Perpustakaan &emsp;</p>
+          <br /><br /><br />
+          <p>(Drs. Suwanto) &emsp; &emsp;&emsp;</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

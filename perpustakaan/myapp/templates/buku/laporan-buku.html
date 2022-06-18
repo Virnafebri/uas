@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %}
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <center><h2>Laporan Keadaan Buku</h2></center>
+        <hr />
+
+        <p>tanggal : 10/07/2022</p>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Kode Buku</th>
+              <th scope="col">Judul</th>
+              <th scope="col">Pengarang</th>
+              <th scope="col">Penerbit</th>
+              <th scope="col">Kondisi</th>
+              <th scope="col">Jumlah</th>
+            </tr>
+          </thead>
+          <tbody>
+             {% for list in buku %}
+            <tr>
+              <td>{{ list.kodebuku }}</td>
+              <td>{{ list.judul }}</td>
+              <td>{{ list.pengarang }}</td>
+              <td>{{ list.penerbit }}</td>
+              <td>Bagus</td>
+              <td>{{ list.jumekslempar }}</td>
+             
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <div style="text-align: right">
+          <p>Mengetahui &emsp; &emsp; &emsp;</p>
+          <p>Kepala Perpustakaan &emsp;</p>
+          <br /><br /><br />
+          <p>(Drs. Suwanto) &emsp; &emsp;&emsp;</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'menu/index.html' %} {% block content %}
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Data Pengembalian Mahasiswa</h2>
+        <a href="{% url 'form_kembali_mahasiswa' %}" class="btn btn-primary mb-3">Tambah Data</a>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">No Kembali</th>
+              <th scope="col">No pinjam</th>
+              <th scope="col">Tanggal Dikembalikan</th>
+              <th scope="col">Denda</th>
+              <th scope="col">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            {% for kembaliM in list_kembali %}
+            <tr>
+              <td>{{ kembaliM.nokembalim }}</td>
+              <td>{{ kembaliM.nopinjamm_id }}</td>
+              <td>{{ kembaliM.tglkembali }}</td>
+              <td>{{ kembaliM.denda }}</td>
+               <td>
+                <a
+                  href="kembali/delete/{{ kembaliM.nopinjamm_id }}"
+                  class="btn btn-danger"
+                  onclick="return confirm('Hapus Data ?')"
+                  >Delete</a
+                >
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

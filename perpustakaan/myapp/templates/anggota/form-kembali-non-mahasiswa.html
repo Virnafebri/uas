@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% block content %}
+{% for row in list_kembali %}
+<form method="POST" action="create" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3>Form Pengembalian Non Mahasiswa</h3>
+        <hr>
+        <div class="form-group row">
+          <label for="nokembali" class="col-2 col-form-label">No Kembali</label> 
+          <div class="col-8">
+            <input id="nokembali" name="nokembali" placeholder="No Kembali" type="text" required="required" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="select" class="col-2 col-form-label">No Pinjam</label> 
+            <div class="col-8">
+              <select id="select" name="nopinjam" class="custom-select" required="required">
+              {% for list in list_kembali %}
+              {% if list.nopinjamn == row.nopinjamn %}
+                <option value="{{ list.nopinjamn }}" selected>{{ list.nopinjamn }}</option>
+              {% else %}
+                <option value="{{ list.nopinjamn }}">{{ list.nopinjamn }}</option>
+              {% endif %}
+              {% endfor %}
+              </select>
+            </div>
+          </div>
+        <div class="form-group row">
+          <label for="penerbit" class="col-2 col-form-label">Tanggal Pinjam</label> 
+          <div class="col-8">
+            <input id="penerbit" name="tglpjm" type="text" value="{{ row.tglpinjam }}" placeholder="Tanggal Pinjam" class="form-control" required="required">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="pengarang" class="col-2 col-form-label">Tanggal Kembali</label> 
+          <div class="col-8">
+            <input id="pengarang" name="tglkmb" value="{{ row.tglkembali }}" placeholder="Tanggal kembali" type="text" required="required" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="thnterbit" class="col-2 col-form-label">Tanggal Pengembalian</label> 
+          <div class="col-8">
+            <input id="thnterbit" name="dikmb" placeholder="Tanggal Pengembalian" type="date" class="form-control" required="required">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="kotaterbit" class="col-2 col-form-label">Denda</label> 
+          <div class="col-8">
+            <input id="kotaterbit" name="denda" type="text" class="form-control" placeholder="Denda" required="required">
+          </div>
+        </div> 
+        
+        <hr>
+        <div class="form-group row">
+          <div class="offset-4 col-8">
+            <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+        <br><br><br>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+{% endfor %}
+
+
+{% endblock %}
